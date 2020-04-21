@@ -23,20 +23,20 @@ router.post('/selectAccurateUser', (req, res) => {
   let params = req.body;
   let conn = new DBHelper().getConn();
   // 精确查询用户
-  conn.query(sqlStr, [params.name, params.age], (err, result) => {
+  conn.query(sqlStr, [params.name], (err, result) => {
     if (err) {
       res.json(err);
     } else {
       res.json(result);
     }
   })
-})
+});
 // 查询用户
 router.post('/selectUser', (req, res) => {
   let sqlStr = sql.user.select;
   let params = req.body;
   let conn = new DBHelper().getConn();
-  conn.query(sqlStr, [params.name, params.age], (err, result) => {
+  conn.query(sqlStr, [params.name], (err, result) => {
     if (err) {
       res.json(err);
     } else {
@@ -51,7 +51,22 @@ router.post('/updateUser', (req, res) => {
   let sqlStr = sql.user.update;
   let params = req.body;
   let conn = new DBHelper().getConn();
-  conn.query(sqlStr, [params.name, params.age], (err, result) => {
+  conn.query(sqlStr, [params.name, params.age, params.id], (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  })
+  conn.end();
+});
+
+// 删除用户
+router.post('/deleteUser', (req, res) => {
+  let sqlStr = sql.user.delete;
+  let params = req.body;
+  let conn = new DBHelper().getConn();
+  conn.query(sqlStr, [params.id], (err, result) => {
     if (err) {
       res.json(err);
     } else {

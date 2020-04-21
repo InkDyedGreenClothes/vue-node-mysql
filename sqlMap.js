@@ -10,7 +10,7 @@ var sqlMap = {
     // 更新用户
     update: 'update user set name = ?, age = ? where id = ?',
     // 删除用户
-    delect: 'delete from user where id = ?'
+    delete: 'delete from user where id = ?'
   }
 }
 
