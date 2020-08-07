@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 
@@ -76,4 +77,4 @@ router.post('/deleteUser', (req, res) => {
   conn.end();
 });
 
-module.exports = router;
+export default router;
